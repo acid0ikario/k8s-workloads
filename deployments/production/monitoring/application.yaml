@@ -42,6 +42,16 @@ spec:
           extraVolumeMounts:
             - name: grafana-db
               mountPath: /var/lib/grafana
+          sidecar:
+            dashboards:
+              enabled: true
+              label: grafana_dashboard
+              labelValue: "1"
+              searchNamespace: ALL
+            datasources:
+              enabled: true
+              label: grafana_datasource
+              labelValue: "1"
         prometheus:
           prometheusSpec:
             resources:
