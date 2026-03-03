@@ -18,7 +18,6 @@ spec:
             storageClassName: standard
             accessModes: ["ReadWriteOnce"]
             size: 1Gi
-            finalizers: ["kubernetes.io/pvc-protection"]
           resources:
             requests:
               cpu: 50m
@@ -73,7 +72,7 @@ spec:
               memory: 32Mi
             limits:
               cpu: 50m
-              memory: 128Mi
+              memory: 64Mi
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
