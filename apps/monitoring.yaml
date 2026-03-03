@@ -9,8 +9,8 @@ spec:
     repoURL: https://github.com/acid0ikario/k8s-workloads.git
     targetRevision: main
     path: deployments/production/monitoring
-    directory:
-      recurse: true
+    plugin:
+      name: sops
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
