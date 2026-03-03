@@ -13,8 +13,12 @@ spec:
       values: |
         grafana:
           persistence:
+            type: pvc
             enabled: true
+            storageClassName: standard
+            accessModes: ["ReadWriteOnce"]
             size: 1Gi
+            finalizers: ["kubernetes.io/pvc-protection"]
           resources:
             requests:
               cpu: 50m
