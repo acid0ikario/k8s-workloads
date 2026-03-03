@@ -24,14 +24,9 @@ spec:
           enabled: true
           config:
             lokiAddress: http://{{ .Release.Name }}:3100/loki/api/v1/push
-        grafana:
-          enabled: false
-          sidecar:
-            datasources:
-              enabled: true
-              label: grafana_datasource
-              labelValue: "1"
-              isDefaultDatasource: false
+        datasource:
+          enabled: true
+          isDefault: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
