@@ -13,11 +13,12 @@ spec:
       values: |
         grafana:
           persistence:
-            type: pvc
             enabled: true
+            type: pvc
             storageClassName: standard
             accessModes: ["ReadWriteOnce"]
             size: 1Gi
+            existingClaim: monitoring-stack-grafana
           resources:
             requests:
               cpu: 50m
