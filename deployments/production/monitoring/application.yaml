@@ -12,6 +12,22 @@ spec:
     helm:
       values: |
         grafana:
+          persistence:
+            enabled: true
+            type: pvc
+            storageClassName: standard
+            accessModes: ["ReadWriteOnce"]
+            size: 1Gi
+          sidecar:
+            dashboards:
+              enabled: true
+              label: grafana_dashboard
+              labelValue: "1"
+              searchNamespace: ALL
+            datasources:
+              enabled: true
+              label: grafana_datasource
+              labelValue: "1"
           resources:
             requests:
               cpu: 50m
@@ -35,13 +51,6 @@ spec:
               url: http://loki-stack.monitoring:3100
               jsonData:
                 maxLines: 1000
-          extraVolumes:
-            - name: grafana-storage
-              persistentVolumeClaim:
-                claimName: monitoring-stack-grafana
-          extraVolumeMounts:
-            - name: grafana-storage
-              mountPath: /var/lib/grafana
         prometheus:
           prometheusSpec:
             resources:
