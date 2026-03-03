@@ -35,6 +35,13 @@ spec:
               url: http://loki-stack.monitoring:3100
               jsonData:
                 maxLines: 1000
+          extraVolumes:
+            - name: grafana-db
+              persistentVolumeClaim:
+                claimName: grafana-db
+          extraVolumeMounts:
+            - name: grafana-db
+              mountPath: /var/lib/grafana
         prometheus:
           prometheusSpec:
             resources:
