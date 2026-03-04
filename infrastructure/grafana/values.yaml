@@ -21,7 +21,7 @@ grafana:
           access: proxy
           isDefault: true
 
-  # Importar Dashboards de Istio automáticamente
+  # Importar Dashboards automáticamente
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
@@ -34,6 +34,21 @@ grafana:
           editable: true
           options:
             path: /var/lib/grafana/dashboards/istio
+        - name: 'ingress-nginx'
+          orgId: 1
+          folder: 'Ingress'
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/ingress-nginx
+
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      searchNamespace: ALL
 
   dashboards:
     istio:
