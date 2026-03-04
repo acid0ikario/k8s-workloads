@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-generator
+  namespace: bookinfo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load-generator
+  template:
+    metadata:
+      labels:
+        app: load-generator
+    spec:
+      containers:
+      - name: load-generator
+        image: curlimages/curl
+        command: ["/bin/sh", "-c"]
+        args: ["while true; do curl -s http://productpage:9080/productpage > /dev/null; sleep 0.5; done"]
