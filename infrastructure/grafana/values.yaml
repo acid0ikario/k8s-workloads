@@ -1,0 +1,51 @@
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - grafana.127.0.0.1.nip.io
+  
+  persistence:
+    enabled: true
+    storageClassName: standard
+    size: 2Gi
+
+  # Configuración del datasource de Prometheus
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://prometheus.istio-system.svc.cluster.local:9090
+          access: proxy
+          isDefault: true
+
+  # Importar Dashboards de Istio automáticamente
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: 'istio'
+          orgId: 1
+          folder: 'Istio'
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/istio
+
+  dashboards:
+    istio:
+      istio-mesh-dashboard:
+        gnetId: 7639
+        revision: 115
+        datasource: Prometheus
+      istio-service-dashboard:
+        gnetId: 7636
+        revision: 115
+        datasource: Prometheus
+      istio-control-plane-dashboard:
+        gnetId: 7645
+        revision: 115
+        datasource: Prometheus
