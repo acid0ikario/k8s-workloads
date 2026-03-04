@@ -12,6 +12,10 @@ spec:
     helm:
       values: |
         grafana:
+          persistence:
+            enabled: true
+            type: pvc
+            existingClaim: grafana-db
           resources:
             requests:
               cpu: 50m
@@ -35,13 +39,6 @@ spec:
               url: http://loki-stack.monitoring:3100
               jsonData:
                 maxLines: 1000
-          extraVolumes:
-            - name: grafana-db
-              persistentVolumeClaim:
-                claimName: grafana-db
-          extraVolumeMounts:
-            - name: grafana-db
-              mountPath: /var/lib/grafana
           sidecar:
             dashboards:
               enabled: true
