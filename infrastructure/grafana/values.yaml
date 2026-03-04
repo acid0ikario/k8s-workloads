@@ -58,6 +58,8 @@ grafana:
       label: grafana_dashboard
       labelValue: "1"
       searchNamespace: ALL
+      extraLabels:
+        grafana_dashboard: "1"
 
   dashboards:
     istio:
