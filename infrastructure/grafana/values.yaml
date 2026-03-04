@@ -8,11 +8,9 @@ grafana:
   persistence:
     enabled: false
 
-  # Deshabilitar chown problemático en Kind
   initChownData:
     enabled: false
 
-  # Configuración de seguridad
   podSecurityContext:
     fsGroup: 472
     runAsGroup: 472
@@ -23,7 +21,6 @@ grafana:
     runAsUser: 472
     runAsGroup: 472
 
-  # Configuración del datasource de Prometheus
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -34,7 +31,6 @@ grafana:
           access: proxy
           isDefault: true
 
-  # Importar Dashboards automáticamente
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
@@ -55,6 +51,13 @@ grafana:
           editable: true
           options:
             path: /var/lib/grafana/dashboards/ingress-nginx
+
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      searchNamespace: ALL
 
   dashboards:
     istio:
