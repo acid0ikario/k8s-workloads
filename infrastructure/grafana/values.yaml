@@ -61,22 +61,3 @@ grafana:
       extraLabels:
         grafana_dashboard: "1"
 
-  dashboards:
-    istio:
-      istio-mesh-dashboard:
-        gnetId: 7639
-        revision: 115
-        datasource: Prometheus
-      istio-service-dashboard:
-        gnetId: 7636
-        revision: 115
-        datasource: Prometheus
-      istio-control-plane-dashboard:
-        gnetId: 7645
-        revision: 115
-        datasource: Prometheus
-    ingress-nginx:
-      nginx-ingress-dashboard:
-        gnetId: 9614
-        revision: 1
-        datasource: Prometheus
