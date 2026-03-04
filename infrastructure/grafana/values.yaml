@@ -43,13 +43,6 @@ grafana:
           options:
             path: /var/lib/grafana/dashboards/ingress-nginx
 
-  sidecar:
-    dashboards:
-      enabled: true
-      label: grafana_dashboard
-      labelValue: "1"
-      searchNamespace: ALL
-
   dashboards:
     istio:
       istio-mesh-dashboard:
