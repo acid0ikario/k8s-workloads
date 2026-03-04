@@ -9,6 +9,10 @@ ingress-nginx:
       default: true
     metrics:
       enabled: true
+      service:
+        annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "10254"
     admissionWebhooks:
       enabled: true
     config:

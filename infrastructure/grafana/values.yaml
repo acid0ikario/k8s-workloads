@@ -49,3 +49,8 @@ grafana:
         gnetId: 7645
         revision: 115
         datasource: Prometheus
+    ingress-nginx:
+      nginx-ingress-dashboard:
+        gnetId: 9614
+        revision: 1
+        datasource: Prometheus
