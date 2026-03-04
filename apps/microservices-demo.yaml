@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/acid0ikario/k8s-workloads.git
-    targetRevision: main
+    targetRevision: master
     path: deployments/production/microservices-demo
     directory:
       recurse: true
