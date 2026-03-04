@@ -30,27 +30,29 @@ grafana:
           url: http://prometheus.istio-system.svc.cluster.local:9090
           access: proxy
           isDefault: true
-# Importar Dashboards automáticamente
-dashboardProviders:
-  dashboardproviders.yaml:
-    apiVersion: 1
-    providers:
-      - name: 'ingress-nginx'
-        orgId: 1
-        folder: 'Ingress'
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/ingress-nginx
-      - name: 'cluster'
-        orgId: 1
-        folder: 'Cluster'
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/cluster
+
+  # Importar Dashboards automáticamente
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: 'ingress-nginx'
+          orgId: 1
+          folder: 'Ingress'
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/ingress-nginx
+        - name: 'cluster'
+          orgId: 1
+          folder: 'Cluster'
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/cluster
+
   sidecar:
     dashboards:
       enabled: true
@@ -59,4 +61,3 @@ dashboardProviders:
       searchNamespace: ALL
       extraLabels:
         grafana_dashboard: "1"
-
