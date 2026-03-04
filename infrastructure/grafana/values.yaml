@@ -10,6 +10,21 @@ grafana:
     storageClassName: standard
     size: 2Gi
 
+  # Deshabilitar chown problemático en Kind
+  initChownData:
+    enabled: false
+
+  # Configuración de seguridad
+  podSecurityContext:
+    fsGroup: 472
+    runAsGroup: 472
+    runAsUser: 472
+  
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 472
+    runAsGroup: 472
+
   # Configuración del datasource de Prometheus
   datasources:
     datasources.yaml:
