@@ -6,9 +6,7 @@ grafana:
       - grafana.127.0.0.1.nip.io
   
   persistence:
-    enabled: true
-    storageClassName: standard
-    size: 2Gi
+    enabled: false
 
   # Deshabilitar chown problemático en Kind
   initChownData:
