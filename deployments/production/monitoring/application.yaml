@@ -12,6 +12,10 @@ spec:
     helm:
       values: |
         grafana:
+          persistence:
+            enabled: true
+            type: pvc
+            existingClaim: grafana-db
           resources:
             requests:
               cpu: 50m
@@ -76,7 +80,7 @@ spec:
               memory: 32Mi
             limits:
               cpu: 50m
-              memory: 128Mi
+              memory: 64Mi
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
