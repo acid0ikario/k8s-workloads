@@ -13,9 +13,14 @@ spec:
       values: |
         grafana:
           persistence:
-            enabled: true
-            type: pvc
-            existingClaim: grafana-db
+            enabled: false
+          extraVolumes:
+            - name: grafana-db-volume
+              persistentVolumeClaim:
+                claimName: grafana-db
+          extraVolumeMounts:
+            - name: grafana-db-volume
+              mountPath: /var/lib/grafana
           resources:
             requests:
               cpu: 50m
@@ -80,7 +85,7 @@ spec:
               memory: 32Mi
             limits:
               cpu: 50m
-              memory: 128Mi
+              memory: 64Mi
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
