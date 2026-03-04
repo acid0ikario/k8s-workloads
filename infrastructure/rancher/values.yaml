@@ -1,0 +1,4 @@
+rancher:
+  hostname: rancher.127.0.0.1.nip.io
+  replicas: 1
+  bootstrapPassword: admin12345

@@ -1,23 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: microservices-demo
+  name: root-application
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/acid0ikario/k8s-workloads.git
     targetRevision: master
-    path: deployments/production/microservices-demo
-    directory:
-      recurse: true
+    path: apps
   destination:
     server: https://kubernetes.default.svc
-    namespace: microservices-demo
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - NamespaceAutoConfirmation=true
