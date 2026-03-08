@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: localhost
+  - host: registry.127.0.0.1.nip.io
     http:
       paths:
       - path: /
@@ -18,3 +18,13 @@ spec:
             name: registry
             port:
               number: 5000
+  - host: registry-ui.127.0.0.1.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: registry-ui
+            port:
+              number: 80

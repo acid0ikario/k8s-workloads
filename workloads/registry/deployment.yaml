@@ -18,3 +18,44 @@ spec:
         image: registry:2
         ports:
         - containerPort: 5000
+        env:
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Origin
+          value: "['http://registry-ui.127.0.0.1.nip.io']"
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Methods
+          value: "['HEAD', 'GET', 'OPTIONS', 'DELETE']"
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Headers
+          value: "['Authorization', 'Accept', 'Cache-Control']"
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Max-Age
+          value: "[1728000]"
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Credentials
+          value: "[true]"
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Expose-Headers
+          value: "['Docker-Content-Digest']"
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-ui
+  namespace: container-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry-ui
+  template:
+    metadata:
+      labels:
+        app: registry-ui
+    spec:
+      containers:
+      - name: ui
+        image: joxit/docker-registry-ui:static
+        ports:
+        - containerPort: 80
+        env:
+        - name: REGISTRY_URL
+          value: "http://registry.127.0.0.1.nip.io"
+        - name: DELETE_IMAGES
+          value: "true"
