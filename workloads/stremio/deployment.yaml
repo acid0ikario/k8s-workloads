@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stremio
+  namespace: stremio
+  labels:
+    app: stremio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stremio
+  template:
+    metadata:
+      labels:
+        app: stremio
+    spec:
+      containers:
+      - name: stremio-server
+        image: stremio/server:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 11470
+        - containerPort: 12470
+      - name: stremio-web
+        image: stremio-web:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
