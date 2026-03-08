@@ -97,3 +97,28 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: container-registry
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/acid0ikario/k8s-workloads.git
+    targetRevision: master
+    path: workloads/registry
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: container-registry
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
