@@ -23,7 +23,7 @@ spec:
         - containerPort: 11470
         - containerPort: 12470
       - name: stremio-web
-        image: stremio-web:v1.0.0
-        imagePullPolicy: Never
+        image: localhost:80/stremio-web:v1.0.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
