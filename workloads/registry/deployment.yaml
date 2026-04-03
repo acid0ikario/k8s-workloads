@@ -20,7 +20,7 @@ spec:
         - containerPort: 5000
         env:
         - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Origin
-          value: "['http://registry-ui.192.168.0.19.nip.io']"
+          value: "['http://registry-ui.127.0.0.1.nip.io']"
         - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Methods
           value: "['HEAD', 'GET', 'OPTIONS', 'DELETE']"
         - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Headers
@@ -56,6 +56,6 @@ spec:
         - containerPort: 80
         env:
         - name: REGISTRY_URL
-          value: "http://registry.192.168.0.19.nip.io"
+          value: "http://registry.127.0.0.1.nip.io"
         - name: DELETE_IMAGES
           value: "true"

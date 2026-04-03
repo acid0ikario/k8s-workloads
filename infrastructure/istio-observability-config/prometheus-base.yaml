@@ -525,7 +525,8 @@ spec:
           image: "prom/prometheus:v2.54.1"
           imagePullPolicy: "IfNotPresent"
           args:
-            - --storage.tsdb.retention.time=15d
+            - --storage.tsdb.retention.time=2h
+            - --storage.tsdb.retention.size=500MB
             - --config.file=/etc/config/prometheus.yml
             - --storage.tsdb.path=/data
             - --web.console.libraries=/etc/prometheus/console_libraries
@@ -577,7 +578,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: standard
+  storageClassName: local-path
   resources:
     requests:
-      storage: 5Gi
+      storage: 2Gi

@@ -1,10 +1,7 @@
 ingress-nginx:
   controller:
-    hostNetwork: false
-    hostPort:
-      enabled: true
     service:
-      type: NodePort
+      type: LoadBalancer
     ingressClassResource:
       default: true
     metrics:

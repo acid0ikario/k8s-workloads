@@ -23,7 +23,7 @@ spec:
         - containerPort: 11470
         - containerPort: 12470
       - name: stremio-web
-        image: registry.192.168.0.19.nip.io/stremio-web:v1.0.0
+        image: registry.127.0.0.1.nip.io/stremio-web:v1.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
