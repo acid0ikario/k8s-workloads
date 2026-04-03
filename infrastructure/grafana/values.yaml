@@ -3,7 +3,7 @@ grafana:
     enabled: true
     ingressClassName: nginx
     hosts:
-      - grafana.127.0.0.1.nip.io
+      - grafana.192.168.0.24.nip.io
   
   persistence:
     enabled: false
