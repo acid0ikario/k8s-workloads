@@ -1,7 +1,9 @@
 ingress-nginx:
   controller:
+    hostPort:
+      enabled: true
     service:
-      type: LoadBalancer
+      type: ClusterIP
     ingressClassResource:
       default: true
     metrics:
